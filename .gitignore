@@ -1,0 +1,18 @@
+# Datasett – distribueres ikke (se README for hvordan du skaffer det)
+Data/CSV_files/
+Data/Cleaned_data/
+*.csv
+*.zip
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
