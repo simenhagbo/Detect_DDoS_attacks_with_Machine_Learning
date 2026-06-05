@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+import json
 from pathlib import Path
 
 # Hent datasettet
@@ -75,3 +76,32 @@ if len(kollisjoner) > 0:
 samlet_df = samlet_df.drop_duplicates(subset=feature_kolonner, keep=False)
 
 print(f"Shape etter fjerning av kollisjoner: {samlet_df.shape}")
+
+# Isoler alle features unntatt 'Label'
+feature_liste = samlet_df.columns.drop('Label').tolist()
+print(f"Antall features samlet: {len(feature_liste)}")
+
+# Definer sti
+cleaned_data_mappe = Path(r"C:\Users\simen\Mine Sommerprosjekter\Detect DDoS Attacks ML-model\Data\Cleaned_data")
+
+filsti = cleaned_data_mappe / "feature_schema.json"
+
+# Skriv strukturen til JSON
+with open(filsti, "w", encoding="utf-8") as f:
+    json.dump(feature_liste, f, indent=4)
+
+print(f"Feature-fasit lagret til: {filsti}")
+
+# Lag en binær target kolonne
+samlet_df['target'] = (samlet_df["Label"] != 'BENIGN').astype(int)
+
+# Bekreft fordeling
+print("Fordeling i Target (0=Benign, 1=Angrep):")
+print(samlet_df['target'].value_counts())
+
+# Bekreft at original Label fortsatt eksisterer for A3-validering
+print("\nSjekker at original Label er bevart (viser topp 3):")
+print(samlet_df['Label'].value_counts().head(3))
+
+# Lagre datasettet til Cleaned_data mappen
+samlet_df.to_csv("Data/Cleaned_data/utvidet_ddos.csv", index=False)
