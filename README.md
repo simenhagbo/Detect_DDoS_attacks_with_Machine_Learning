@@ -16,7 +16,7 @@ Det funnet er grunnen til at prosjektet nå handler om **generalisering**: trene
 
 Prosjektet bruker [CIC-IDS2017](https://www.unb.ca/cic/datasets/ids-2017.html) fra Canadian Institute for Cybersecurity. Det er fem dager med simulert nettverkstrafikk – normal aktivitet blandet med et utvalg angrep (DoS, DDoS, brute force, portscan, web-angrep, infiltration og botnet).
 
-**Dataene ligger ikke i dette repoet.** De er på over 1 GB, og datasettet har sine egne bruksvilkår. Du laster dem ned selv fra lenken over (CSV-variantene, «MachineLearningCSV») og legger dem i `Data/CSV_files/`. En gjennomgang av hva hver fil inneholder ligger i [doc/CIC-IDS2017-dataset.md](doc/CIC-IDS2017-dataset.md).
+**Dataene ligger ikke i dette repoet.** De er på over 1 GB, og datasettet har sine egne bruksvilkår. Du laster dem ned selv fra lenken over (CSV-variantene, «MachineLearningCSV») og legger dem i `Data/CSV_files/`.
 
 Bruker du datasettet skal denne artikkelen siteres:
 
@@ -31,7 +31,6 @@ Source/
     data_cleaning.py     renser fredags-DDoS-fila (baselinen)
     utvidet_dataset.py   bygger et samlet fler-angreps-datasett (pågår)
   model.py               trener og evaluerer baseline-modellen
-doc/                     plan, datasettnotater, gjennomgang og GPU-oppsett
 Data/                    her legges datasettet (utelatt fra repoet)
 ```
 
@@ -52,8 +51,6 @@ pip install pandas numpy scikit-learn
 - [ ] Fler-angreps-datasett (DoS + DDoS + benign)
 - [ ] Leave-one-attack-out-evaluering
 - [ ] Senere: anomalideteksjon på egen trafikk
-
-Den detaljerte planen ligger i [doc/PLAN.md](doc/PLAN.md).
 
 ## Lisens
 

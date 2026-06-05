@@ -4,6 +4,9 @@ Data/Cleaned_data/
 *.csv
 *.zip
 
+# Interne dokumenter – holdes kun lokalt
+doc/
+
 # Python
 __pycache__/
 *.py[cod]
